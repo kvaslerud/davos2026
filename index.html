@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Davos 2026 · AI Wrap-Up for Ledere</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   TOKENS — DARK + ORANGE
+   ═══════════════════════════════════════════ */
+:root {
+  --bg-base: #0A0A0B;
+  --bg-card: #111113;
+  --bg-card-hover: #17171A;
+  --bg-surface: #1A1A1E;
+  --bg-elevated: #222226;
+
+  --orange-500: #F97316;
+  --orange-400: #FB923C;
+  --orange-300: #FDBA74;
+  --orange-600: #EA580C;
+  --orange-700: #C2410C;
+  --orange-glow: rgba(249, 115, 22, 0.12);
+  --orange-glow-strong: rgba(249, 115, 22, 0.20);
+
+  --text-primary: #F0EDE8;
+  --text-secondary: #A8A29E;
+  --text-tertiary: #6B6660;
+  --text-muted: #4A4642;
+
+  --line: #2A2723;
+  --line-subtle: #1F1D1A;
+
+  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.4);
+  --shadow-glow: 0 0 40px rgba(249,115,22,0.08);
+}
+
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--bg-base);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Subtle grid texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--orange-glow-strong);
+  color: var(--text-primary);
+}
+
+a { color: var(--orange-400); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--orange-300); }
+
+/* ═══════════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════════ */
+.page-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ═══════════════════════════════════════════
+   TOP BAR
+   ═══════════════════════════════════════════ */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,11,0.85);
+  backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--line-subtle);
+  padding: 12px 0;
+}
+
+.top-bar-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-bar-brand {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange-500);
+}
+
+.top-bar-right {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════ */
+.hero {
+  padding: 100px 0 72px;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange-500);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 2px;
+  background: var(--orange-500);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  color: var(--orange-500);
+}
+
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.55;
+  margin-bottom: 40px;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.hero-meta-item {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.hero-meta-dot {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+/* ═══════════════════════════════════════════
+   SECTION
+   ═══════════════════════════════════════════ */
+.section {
+  padding: 80px 0 40px;
+  border-top: 1px solid var(--line-subtle);
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange-500);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.section-intro {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 62ch;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+/* ═══════════════════════════════════════════
+   MODEL CARDS (Part A)
+   ═══════════════════════════════════════════ */
+.model-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.model-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.model-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--orange-700);
+}
+
+.model-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.model-card[data-model="gpt"]::before { background: #10A37F; }
+.model-card[data-model="claude"]::before { background: var(--orange-500); }
+.model-card[data-model="gemini"]::before { background: #4285F4; }
+.model-card[data-model="grok"]::before { background: #8B8B8B; }
+
+.model-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.model-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+  color: var(--text-tertiary);
+  background: var(--bg-surface);
+  border: 1px solid var(--line);
+}
+
+.model-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.model-tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 14px;
+  background: var(--bg-base);
+  border-radius: var(--radius-xs);
+  padding: 2px;
+}
+
+.model-tab {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 6px 6px;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.model-tab.active {
+  background: var(--bg-elevated);
+  color: var(--orange-400);
+}
+
+.model-tab-content {
+  display: none;
+}
+
+.model-tab-content.active {
+  display: block;
+}
+
+.model-tab-content p {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* ═══════════════════════════════════════════
+   ACCORDION MODULES (Part B)
+   ═══════════════════════════════════════════ */
+.exec-module {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.exec-module:hover {
+  border-color: rgba(249,115,22,0.2);
+  box-shadow: var(--shadow-glow);
+}
+
+.exec-module-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.exec-module-header:hover {
+  background: var(--bg-card-hover);
+}
+
+.exec-module-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--orange-500);
+  flex-shrink: 0;
+  width: 36px;
+}
+
+.exec-module-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.exec-module-toggle {
+  width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  flex-shrink: 0;
+}
+
+.exec-module.open .exec-module-toggle {
+  transform: rotate(180deg);
+}
+
+.exec-module-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.16,1,0.3,1);
+}
+
+.exec-module.open .exec-module-body {
+  max-height: 3000px;
+}
+
+.exec-module-content {
+  padding: 0 24px 24px;
+}
+
+.exec-module-content p {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  max-width: 66ch;
+}
+
+.highlight-text {
+  background: var(--orange-glow);
+  color: var(--orange-300);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.board-implication {
+  background: var(--orange-glow);
+  border-left: 3px solid var(--orange-500);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 20px;
+  margin-top: 16px;
+}
+
+.board-implication-label {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange-500);
+  margin-bottom: 8px;
+}
+
+.board-implication p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+/* Pull quote */
+.pull-quote {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-primary);
+  padding: 24px 0 24px 24px;
+  border-left: 3px solid var(--orange-500);
+  margin: 24px 0;
+  max-width: 56ch;
+}
+
+/* ═══════════════════════════════════════════
+   PART C MODULES
+   ═══════════════════════════════════════════ */
+.risk-module {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.risk-module:last-child {
+  border-bottom: none;
+}
+
+.risk-module-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.risk-module-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--orange-500);
+}
+
+.risk-module h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.risk-module p {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  max-width: 66ch;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+.footer-bar {
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer-bar p {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-d1 { transition-delay: 0.06s; }
+.reveal-d2 { transition-delay: 0.12s; }
+.reveal-d3 { transition-delay: 0.18s; }
+.reveal-d4 { transition-delay: 0.24s; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .model-grid { grid-template-columns: 1fr; }
+  .hero { padding: 72px 0 48px; }
+  .hero h1 { font-size: 2.2rem; }
+  .section { padding: 56px 0 32px; }
+}
+
+@media print {
+  body { background: #fff; color: #111; }
+  .top-bar { display: none; }
+  .exec-module.open .exec-module-body { max-height: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <span class="top-bar-brand">Davos 2026 · AI Rapport</span>
+    <span class="top-bar-right">TMK · BDO Consulting</span>
+  </div>
+</header>
+
+<div class="page-wrapper">
+
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+  <div class="reveal">
+    <div class="hero-eyebrow">Davos 2026 · AI Wrap-Up</div>
+    <h1>LLM-enes <span>dom</span></h1>
+    <p class="hero-subtitle">Fire AI-modeller analyserer det som ble sagt — og det som forble usagt — på World Economic Forum 2026</p>
+  </div>
+  <div class="hero-meta reveal reveal-d1">
+    <span class="hero-meta-item">Tobias Mørland Kvaslerud · BDO Consulting</span>
+    <span class="hero-meta-dot"></span>
+    <span class="hero-meta-item">Analysesamarbeid: GPT · Claude Opus 4.6 · Gemini · Grok</span>
+    <span class="hero-meta-dot"></span>
+    <span class="hero-meta-item">Januar 2026</span>
+    <span class="hero-meta-dot"></span>
+    <span class="hero-meta-item" style="font-style: italic;">Innholdet reflekterer det forfatteren og språkmodellene vurderte, og ikke BDO.</span>
+  </div>
+</section>
+
+<!-- ════════ PART A: MODEL CARDS ════════ -->
+<section class="section" id="part-a">
+  <div class="reveal">
+    <span class="section-label">Del A — Modellene svarer</span>
+    <h2>Hva ser AI-modellene i Davos-debatten?</h2>
+    <p class="section-intro">Fire ledende AI-modeller fikk identiske spørsmål om Davos 2026. Resultatene avslører både bred enighet og oppsiktsvekkende forskjeller i hva modellene vektlegger.</p>
+  </div>
+
+  <div class="model-grid">
+    <!-- GPT -->
+    <article class="model-card reveal reveal-d1" data-model="gpt">
+      <div class="model-header">
+        <span class="model-name">GPT</span>
+        <span class="model-badge">OpenAI</span>
+      </div>
+      <div class="model-tabs">
+        <button class="model-tab active" data-tab="q1">Viktigst</button>
+        <button class="model-tab" data-tab="q2">Usagt</button>
+        <button class="model-tab" data-tab="q3">Styret</button>
+      </div>
+      <div class="model-tab-content active" data-tab="q1">
+        <p>AI-agenter var det dominerende temaet. Overgangen fra passiv AI til autonome agenter som handler på vegne av organisasjoner ble beskrevet som det mest transformative skiftet. Altman og Huang signaliserte at 2026 blir «agent-året».</p>
+      </div>
+      <div class="model-tab-content" data-tab="q2">
+        <p>Ingen toppledere adresserte konsentrasjonen av AI-makt på færre hender. Diskusjonen om hvem som faktisk kontrollerer AI-infrastrukturen — og hva det betyr for demokratisk kontroll — var påfallende fraværende.</p>
+      </div>
+      <div class="model-tab-content" data-tab="q3">
+        <p>Styrer må utvikle forståelse for agenters beslutningsmyndighet. Hvem er ansvarlig når en AI-agent gjennomfører en transaksjon? Governance-rammeverk trenger en fundamental oppdatering.</p>
+      </div>
+    </article>
+
+    <!-- Claude -->
+    <article class="model-card reveal reveal-d2" data-model="claude">
+      <div class="model-header">
+        <span class="model-name">Claude</span>
+        <span class="model-badge">Anthropic</span>
+      </div>
+      <div class="model-tabs">
+        <button class="model-tab active" data-tab="q1">Viktigst</button>
+        <button class="model-tab" data-tab="q2">Usagt</button>
+        <button class="model-tab" data-tab="q3">Styret</button>
+      </div>
+      <div class="model-tab-content active" data-tab="q1">
+        <p>Det stille skiftet fra eksperimentering til produksjon. Mens overskriftene handlet om agenter, er den reelle transformasjonen at store organisasjoner nå går fra pilotprosjekter til skalert implementering — med konsekvenser for organisasjonsdesign og arbeidskraft.</p>
+      </div>
+      <div class="model-tab-content" data-tab="q2">
+        <p>Energikostnadene ved AI-skalering ble underkommunisert. Datasentre krever enorme mengder energi, og dette kolliderer direkte med klimamål. Ingen paneldeltaker koblet AI-ambisjonene eksplisitt til energiregnskapet.</p>
+      </div>
+      <div class="model-tab-content" data-tab="q3">
+        <p>Styrer bør kreve en «AI-modenhetsvurdering» — ikke bare en teknologistrategi. Spørsmålet er ikke om selskapet bruker AI, men om organisasjonen er strukturert for å absorbere AI-drevet endring.</p>
+      </div>
+    </article>
+
+    <!-- Gemini -->
+    <article class="model-card reveal reveal-d3" data-model="gemini">
+      <div class="model-header">
+        <span class="model-name">Gemini</span>
+        <span class="model-badge">Google</span>
+      </div>
+      <div class="model-tabs">
+        <button class="model-tab active" data-tab="q1">Viktigst</button>
+        <button class="model-tab" data-tab="q2">Usagt</button>
+        <button class="model-tab" data-tab="q3">Styret</button>
+      </div>
+      <div class="model-tab-content active" data-tab="q1">
+        <p>Geopolitisk fragmentering av AI-økosystemet. USA, Kina og EU trekker i fundamentalt ulike retninger — og Davos viste at dette handler om rivalisering om standarder, data og kontroll over fremtidens infrastruktur.</p>
+      </div>
+      <div class="model-tab-content" data-tab="q2">
+        <p>Utviklingslands posisjon i AI-revolusjonen fikk minimal oppmerksomhet. Afrikas potensielle rolle som både marked og innovatør ble oversett til fordel for USA–Kina-dynamikken.</p>
+      </div>
+      <div class="model-tab-content" data-tab="q3">
+        <p>Styrer med internasjonal virksomhet bør kartlegge regulatorisk fragmentering som en konkret risikofaktor. AI-regler varierer nå dramatisk mellom jurisdiksjoner.</p>
+      </div>
+    </article>
+
+    <!-- Grok -->
+    <article class="model-card reveal reveal-d4" data-model="grok">
+      <div class="model-header">
+        <span class="model-name">Grok</span>
+        <span class="model-badge">xAI</span>
+      </div>
+      <div class="model-tabs">
+        <button class="model-tab active" data-tab="q1">Viktigst</button>
+        <button class="model-tab" data-tab="q2">Usagt</button>
+        <button class="model-tab" data-tab="q3">Styret</button>
+      </div>
+      <div class="model-tab-content active" data-tab="q1">
+        <p>Det enorme gapet mellom AI-optimismen på scenen og realiteten i implementering. Davos-talerne lovet transformasjon, men flertallet av bedrifter sliter med å hente konkret ROI fra AI-investeringer. Hypen er reell, verdiskapningen er ujevn.</p>
+      </div>
+      <div class="model-tab-content" data-tab="q2">
+        <p>Ansattes faktiske opplevelse av AI-omstilling. Davos-fortellingen handler om produktivitet og vekst, men ingen tok opp hvordan det føles å bli erstattet, omstilt eller marginalisert i eget selskap.</p>
+      </div>
+      <div class="model-tab-content" data-tab="q3">
+        <p>Styrer bør bestille en ærlig «AI Reality Check» — et internt dokument som skiller mellom annonsert AI-strategi og faktisk adopsjon, inkludert hva som ikke fungerer.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     PART B — EXECUTIVE SUMMARY AV DET SOM BLE ADRESSERT
+     ════════════════════════════════════════════════════════ -->
+<section class="section" id="part-b">
+  <div class="reveal">
+    <span class="section-label">Del B — Executive Summary</span>
+    <h2>Det som ble adressert i Davos</h2>
+    <p class="section-intro">Ti sentrale innsikter fra Davos 2026 — konsolidert fra fire AI-modellers kryssanalyse av panelene, talene og de viktigste signalene fra verdens toppledere.</p>
+  </div>
+
+  <!-- B.01 -->
+  <article class="exec-module open reveal" id="b01">
+    <div class="exec-module-header" role="button" aria-expanded="true">
+      <span class="exec-module-num">B.01</span>
+      <span class="exec-module-title">Verdens toppledere sier at «AI tar over»</span>
+      <span class="exec-module-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+    </div>
+    <div class="exec-module-body">
+      <div class="exec-module-content">
+        <p>Davos 2026 var det første toppmøtet der AI ikke var et sidepanel, men <span class="highlight-text">selve hovedfortellingen</span>. Sam Altman (OpenAI), Jensen Huang (NVIDIA), Satya Nadella (Microsoft) og en rekke Fortune 500-CEOer var samstemte: AI er ikke lenger en teknologitrend — det er den sentrale transformasjonskraften i global økonomi.</p>
+        <p>Retorikken har endret seg fundamentalt fra «AI vil bli viktig» til «AI er allerede avgjørende». Selskapene som presenterte i Davos snakket ikke om eksperimentering eller pilotprosjekter — de snakket om produksjonsmodne AI-systemer som allerede erstatter hele arbeidsprosesser. Signalet til CEO-er og styrer er utvetydig: dette er ikke noe du kan velge bort.</p>
+        <div class="board-implication">
+          <div class="board-implication-label">Styreimplikasjon</div>
+          <p>AI er ikke lenger et IT-spørsmål — det er et strategisk ledelsesspørsmål. Styret bør sikre at AI-transformasjon er fast punkt på agendaen, med rapportering fra administrasjonen på fremdrift, investering og verdiskapning.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- B.02 -->
+  <article class="exec-module reveal" id="b02">
+    <div class="exec-module-header" role="button" aria-expanded="false">
+      <span class="exec-module-num">B.02</span>
+      <span class="exec-module-title">AI er supercharged akselerasjon</span>
+      <span class="exec-module-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+    </div>
+    <div class="exec-module-body">
+      <div class="exec-module-content">
+        <p>Tempoet i AI-utviklingen ble gjentatte ganger beskrevet som «uten historisk sidestykke». Modellkapasiteten dobles nå raskere enn Moores lov noensinne forutsa for prosessorkraft. GPT, Claude, Gemini og Grok leverer alle kapabiliteter i dag som var science fiction for to år siden.</p>
+        <p>Investeringene følger: Stargate-prosjektet alene representerer over <span class="highlight-text">$500 milliarder i AI-infrastruktur</span>. NVIDIAs Jensen Huang var tydelig: tilgang til beregningskraft definerer hvem som leder. Cloud-infrastrukturen kontrolleres av amerikanske hyperscalere, og Europas evne til å bygge egen kapasitet henger etter.</p>
+        <p>For norske selskaper betyr dette at vinduet for posisjonering er smalt. Akselerasjonen er ikke lineær — den er eksponentiell, og de som venter «ett år til» kan oppdage at gapet er blitt uoverstigelig.</p>
+        <div class="board-implication">
+          <div class="board-implication-label">Styreimplikasjon</div>
+          <p>Krev innsikt i selskapets compute-strategi og AI-modenhet. «Vi følger med» er ikke en strategi — styret bør forstå om selskapet er i gang med reell implementering eller fremdeles i observasjonsmodus.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- B.03 -->
+  <article class="exec-module reveal" id="b03">
+    <div class="exec-module-header" role="button" aria-expanded="false">
+      <span class="exec-module-num">B.03</span>
+      <span class="exec-module-title">Raskere fortrengning enn omstilling</span>
+      <span class="exec-module-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+    </div>
+    <div class="exec-module-body">
+      <div class="exec-module-content">
+        <p>Et gjennomgangstema i Davos var det ubehagelige gapet mellom <span class="highlight-text">hastigheten AI utvikler seg med, og hastigheten virksomheter klarer å omstille seg</span>. Teknologien akselererer eksponentielt mens organisasjoner endrer seg lineært — og dette gapet vokser.</p>
+        <p>Davos-panelene sa «augmentation, not replacement», men modellenes egne analyser er mer nyanserte: mange oppgaver — ikke bare jobber — vil forsvinne, og nye vil oppstå. Utfordringen er at de som mister oppgaver og de som får nye, sjelden er de samme menneskene. AI utvikler seg raskere enn de fleste virksomheter har kapasitet til å absorbere endringen.</p>
+        <p>For selskaper som ikke aktivt investerer i endringsledelse, kompetanseutvikling og organisatorisk fleksibilitet betyr dette at de vil oppleve AI som en disruptiv kraft snarere enn en verdiskapende en.</p>
+        <div class="board-implication">
+          <div class="board-implication-label">Styreimplikasjon</div>
+          <p>Krev en «arbeidsstyrkekonsekvensanalyse» som del av AI-strategien. Ikke bare «hvilken teknologi implementerer vi?» men «har organisasjonen kapasitet til å absorbere endringen i det tempoet teknologien krever?»</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- B.04 -->
+  <article class="exec-module reveal" id="b04">
+    <div class="exec-module-header" role="button" aria-expanded="false">
+      <span class="exec-module-num">B.04</span>
+      <span class="exec-module-title">Fra hype til styring: AI er et CEO- og styrebordstema, men de er bakpå</span>
+      <span class="exec-module-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+    </div>
+    <div class="exec-module-body">
+      <div class="exec-module-content">
+        <p>Bak den glansede scenen i Davos ulmet en voksende frustrasjon: <span class="highlight-text">AI-investeringene har vært massive, men konkret avkastning er fortsatt vanskelig å måle</span>. McKinseys siste Global AI Survey viser at kun 15% av selskaper rapporterer at AI har «vesentlig påvirket» bunnlinjen.</p>
+        <p>De færreste styrer har et fungerende rammeverk for AI-governance. Hvem eier AI-risikoen? Hvem godkjenner nye AI-applikasjoner? Hvem overvåker output? For de fleste er svaret «ingen spesifikk» — og det er ikke godt nok i 2026. Davos viste at selv globale selskaper famler med disse grunnleggende spørsmålene.</p>
+        <div class="pull-quote">«Problemet er ikke AI-teknologien. Problemet er at de fleste selskaper ber AI løse gårsdagens problemer raskere, i stedet for å stille nye spørsmål.»</div>
+        <p>EU AI Act trer i kraft i faser fra 2026, men lovgiverne står overfor et paradoks: teknologien utvikler seg raskere enn reguleringen kan følge. Selskapene som bygger robuste AI-governance-rammeverk nå — uavhengig av regulering — vil ha et fortrinn når reglene klarner.</p>
+        <div class="board-implication">
+          <div class="board-implication-label">Styreimplikasjon</div>
+          <p>Etabler en tydelig governance-struktur for AI nå: hvem eier risikoen, hvem godkjenner nye AI-applikasjoner, og hvordan rapporteres det til styret? Ikke vent på ferdig regelverk. Bruk NIST AI RMF eller ISO 42001 som utgangspunkt.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- B.05 -->
+  <article class="exec-module reveal" id="b05">
+    <div class="exec-module-header" role="button" aria-expanded="false">
+      <span class="exec-module-num">B.05</span>
+      <span class="exec-module-title">AI — hvorfor ingen verdi? Alle hopper bukk over fundament og opplæring</span>
+      <span class="exec-module-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+    </div>
+    <div class="exec-module-body">
+      <div class="exec-module-content">
+        <p>Et av Davos-paradoksene: alle snakker om AI-verdi, men <span class="highlight-text">nesten ingen snakker om fundamentet som kreves for å realisere den</span>. Beste modell i verden hjelper ikke uten læring, adopsjon og grunnleggende opplæring i organisasjonen. ROI forblir en drøm uten dette.</p>
+        <p>AI-kompetanse er den kritiske flaskehalsen. Selskapene som leder AI-transformasjonen er de som har klart å tiltrekke — og beholde — folk som forstår skjæringspunktet mellom teknologi, forretning og organisasjon. De mest ettertraktede profilene er «AI-translatører» — folk som kan oversette mellom teknisk mulighetsrom og forretningsbehov. Disse finnes det ekstremt få av.</p>
+        <p>For norske virksomheter — særlig utenfor Oslo — er dette kritisk. Talent-tilgangen avgjør AI-ambisjonene, og konkurransen er global. Selskapene som investerer i bred opplæring og bygger intern kompetanse nå vil ha et betydelig fortrinn.</p>
+        <div class="board-implication">
+          <div class="board-implication-label">Styreimplikasjon</div>
+          <p>Spør administrasjonen: har vi folk som forstår AI godt nok til å lede transformasjonen? Talent- og opplæringsstrategi for AI bør være et eget punkt i HR-rapporteringen til styret. Verdens beste verktøy uten opplæring = null verdi.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- B.06 -->
+  <article class="exec-module reveal" id="b06">
+    <div class="exec-module-header" role="button" aria-expanded="false">
+      <span class="exec-module-num">B.06</span>
+      <span class="exec-module-title">Virkelig gevinst krever end-to-end arbeidsflyt-redesign. Det er agentisk AI som gjelder</span>
+      <span class="exec-module-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+    </div>
+    <div class="exec-module-body">
+      <div class="exec-module-content">
+        <p>Davos 2026 markerte vendepunktet i retorikken rundt AI: fra chatbots og assistenter til <span class="highlight-text">autonome agenter som handler uten menneskelig mellomkomst</span>. Altman, Huang og Nadella var samstemte: AI-agenter er ikke lenger et forskningsprosjekt, men en kommersiell realitet.</p>
+        <p>De største gevinstene kommer ikke fra å «legge AI oppå» eksisterende prosesser, men fra å redesigne hele arbeidsflyten fra ende til ende. Selskaper som bare effektiviserer steg for steg oppnår marginale forbedringer. De som redesigner hele kjeden med AI-agenter i kjernen oppnår transformativ effekt.</p>
+        <p>Implikasjonen er fundamental. Når en AI-agent kan forhandle en kontrakt, bestille varer, eller rebalansere en portefølje — hvem bærer ansvaret? Eksisterende governance-rammeverk er designet for menneskelige beslutningstakere. Agent-paradigmet krever en ny modell for ansvar, tilsyn og kontroll.</p>
+        <div class="board-implication">
+          <div class="board-implication-label">Styreimplikasjon</div>
+          <p>Styret bør be om en kartlegging av hvilke prosesser som er kandidater for end-to-end redesign med AI-agenter, og etablere policy for menneske-i-loopen-krav på kritiske beslutninger. Ikke bare «bruk AI» — men «redesign arbeidsflyten».</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- B.07 -->
+  <article class="exec-module reveal" id="b07">
+    <div class="exec-module-header" role="button" aria-expanded="false">
+      <span class="exec-module-num">B.07</span>
+      <span class="exec-module-title">Skalering = organisasjonsdesign: human in the lead, nye mandater og beslutningsrytmer</span>
+      <span class="exec-module-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+    </div>
+    <div class="exec-module-body">
+      <div class="exec-module-content">
+        <p>Davos avslørte et gap mange selskaper kjenner seg igjen i: pilotene fungerer, men <span class="highlight-text">skaleringen stopper opp</span>. Grunnen er sjelden teknisk — den er organisatorisk. Å skalere AI krever ikke bare bedre modeller, men en fundamentalt annen måte å organisere mennesker, mandater og beslutningsrytmer på.</p>
+        <p>«Human in the lead» ble det nye mantraet, men det betyr noe konkret: hvem har mandat til å godkjenne AI-drevne beslutninger? Hvor i organisasjonen sitter AI-eierskapet? Hvordan endres rapporteringslinjer og ansvarsområder når AI gjør deler av jobben?</p>
+        <p>Selskapene som lykkes med skalering er de som behandler AI-implementering som et organisasjonsdesign-prosjekt — ikke et teknologiprosjekt. Det krever nye roller, nye beslutningsprosesser og en kultur der mennesker og AI arbeider sammen med tydelige ansvarsgrenser.</p>
+        <div class="board-implication">
+          <div class="board-implication-label">Styreimplikasjon</div>
+          <p>Be administrasjonen redegjøre for organisatorisk AI-beredskap: har vi mandatene, rollene og beslutningsrytmene som kreves for å skalere fra pilot til produksjon? Og hvem er «human in the lead»?</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- B.08 -->
+  <article class="exec-module reveal" id="b08">
+    <div class="exec-module-header" role="button" aria-expanded="false">
+      <span class="exec-module-num">B.08</span>
+      <span class="exec-module-title">Responsible AI & trust: Friksjonsfjerner og verdienabler</span>
+      <span class="exec-module-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+    </div>
+    <div class="exec-module-body">
+      <div class="exec-module-content">
+        <p>Kundenes tillit til AI-drevne beslutninger er skjør. Davos viste at selskaper som er <span class="highlight-text">transparente om sin AI-bruk bygger sterkere relasjoner</span> — mens de som gjemmer AI bak kulissene risikerer et tillitssammenbrudd når det uunngåelig avsløres.</p>
+        <p>Responsible AI er ikke en brems — det er en friksjonsfjerner og verdienabler. Selskaper som investerer i ansvarlig AI-praksis opplever raskere adopsjon internt (ansatte stoler på verktøyene), bedre kundemottakelse (transparens bygger lojalitet), og lavere regulatorisk risiko. Det som ser ut som en kostnad er i realiteten en investering i langsiktig konkurranseevne.</p>
+        <p>Den geopolitiske fragmenteringen forsterker dette: USA, EU og Kina trekker i ulike retninger på AI-regulering. Selskaper som bygger robuste AI-prinsipper uavhengig av jurisdiksjon posisjonerer seg for å operere globalt uten compliance-sjokk.</p>
+        <div class="board-implication">
+          <div class="board-implication-label">Styreimplikasjon</div>
+          <p>Responsible AI er ikke compliance — det er strategi. Krev at administrasjonen har en kommunikasjonsstrategi for AI-bruk og at AI-prinsipper er forankret i selskapets verdier. Transparens er det nye konkurransefortrinnet.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- B.09 -->
+  <article class="exec-module reveal" id="b09">
+    <div class="exec-module-header" role="button" aria-expanded="false">
+      <span class="exec-module-num">B.09</span>
+      <span class="exec-module-title">Produktivitetsparadokset: timer spart spises av rework og kontroll</span>
+      <span class="exec-module-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+    </div>
+    <div class="exec-module-body">
+      <div class="exec-module-content">
+        <p>Gapet mellom AI-optimismen på scenen og realiteten i implementering var et gjennomgangstema. Davos-talerne lovet produktivitetsgevinster, men <span class="highlight-text">mange selskaper opplever at timer spart av AI spises opp av rework, kvalitetskontroll og feilretting</span>.</p>
+        <p>Jo mer avhengig organisasjonen blir av AI, desto mer sårbar er den for AI-feil. Hallusinasjoner, modellkollaps, API-nedetid — alt dette er operasjonelle risikoer. Når en ansatt bruker 30 minutter på å få AI til å lage et utkast og deretter 45 minutter på å rette det opp, er netto produktivitetsgevinst negativ.</p>
+        <p>Løsningen er ikke å droppe AI, men å investere i kvalitetssikring, promptkompetanse og en realistisk forventning til hva AI kan og ikke kan levere. Selskapene som lykkes er de som bruker AI som en partner — ikke en erstatning — og som har bygget inn kvalitetslooper fra dag én.</p>
+        <div class="board-implication">
+          <div class="board-implication-label">Styreimplikasjon</div>
+          <p>Bestill en intern «AI Reality Check» — mål faktisk tid brukt vs. tid spart. Inkluder AI-operasjonell risiko i BCP/DR-planlegging. Hva skjer om AI-leverandøren går ned? Har vi fallback-prosesser?</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- B.10 -->
+  <article class="exec-module reveal" id="b10">
+    <div class="exec-module-header" role="button" aria-expanded="false">
+      <span class="exec-module-num">B.10</span>
+      <span class="exec-module-title">Fysisk AI / humanoids er her, og rulles ut neste år</span>
+      <span class="exec-module-toggle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+    </div>
+    <div class="exec-module-body">
+      <div class="exec-module-content">
+        <p>Et av de mest oppsiktsvekkende temaene i Davos 2026 var den akselererende utviklingen av <span class="highlight-text">fysisk AI og humanoide roboter</span>. NVIDIA, Tesla (Optimus), Figure AI og flere demonstrerte prototyper som nå beveger seg fra lab til kommersiell utrulling.</p>
+        <p>Jensen Huang var eksplisitt: fysisk AI er det neste store skiftet etter agentisk AI. Roboter som kan navigere fysiske miljøer, utføre manuelle oppgaver og samarbeide med mennesker er ikke lenger 10 år unna — de er 1–2 år unna masseproduksjon. Implikasjonene strekker seg langt utover industri og logistikk: helsevesen, eldreomsorg, bygg og anlegg, og detaljhandel står foran fundamentale endringer.</p>
+        <p>For norske virksomheter er spørsmålet ikke om dette er relevant — men <span class="highlight-text">hva det betyr for alle og enhver</span>. Jobber som i dag anses som «sikre» fordi de krever fysisk tilstedeværelse, vil bli utfordret. Kombinasjonen av agentisk AI (digital arbeidskraft) og humanoide roboter (fysisk arbeidskraft) representerer et paradigmeskifte ingen sektor er immun mot.</p>
+        <div class="board-implication">
+          <div class="board-implication-label">Styreimplikasjon</div>
+          <p>Fysisk AI er ikke science fiction — det er en 18-måneders horisont. Styret bør be om en vurdering av hvordan humanoide roboter og fysisk AI kan påvirke selskapets operasjoner, arbeidsstyrke og konkurranseposisjon. Denne utviklingen fortjener en egen diskusjon.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     PART C — DE VIKTIGSTE TEMAENE SOM IKKE BLE ADRESSERT
+     ════════════════════════════════════════════════════════ -->
+<section class="section" id="part-c">
+  <div class="reveal">
+    <span class="section-label">Del C — Det som ikke ble sagt</span>
+    <h2>De viktigste temaene som ikke ble adressert</h2>
+    <p class="section-intro">Under overflaten av AI-optimisme lurte en serie spørsmål ingen hadde gode svar på. Ti blinde flekker Davos-delegatene ikke adresserte — men som styret og ledelsen ikke har råd til å ignorere.</p>
+  </div>
+
+  <!-- C.01 -->
+  <div class="risk-module reveal" id="c01">
+    <div class="risk-module-header">
+      <span class="risk-module-num">C.01</span>
+      <h3>Konsensus om «people transformation» — men stopper med overskriftene</h3>
+    </div>
+    <p>Alle i Davos var enige: AI-transformasjon er egentlig en «people transformation». Men ingen gikk videre enn overskriften. Hva burde stått under? Konkret: endringsledelse, systematisk opplæring på alle nivåer, nye roller og ansvarsområder, psykologisk trygghet i overgangen, og en kultur som belønner læring snarere enn perfeksjon. Uten dette forblir «people first» et tomt mantra. De selskapene som lykkes investerer like mye i mennesker som i teknologi — fra onboarding-programmer for AI-verktøy til ledertrening i AI-drevet beslutningstaking.</p>
+    <div class="board-implication">
+      <div class="board-implication-label">Styreimplikasjon</div>
+      <p>Krev at «people transformation» er mer enn en overskrift i AI-strategien. Be om en konkret plan med milepæler for kompetanseutvikling, endringsledelse og kulturbygging.</p>
+    </div>
+  </div>
+
+  <!-- C.02 -->
+  <div class="risk-module reveal" id="c02">
+    <div class="risk-module-header">
+      <span class="risk-module-num">C.02</span>
+      <h3>Halveringstiden for relevant kunnskap: fra 10 år til to — hvem må du ha med på reisen?</h3>
+    </div>
+    <p>Når AI akselererer kunnskapsproduksjonen, kollapser halveringstiden for relevant kompetanse. Det du lærte for fem år siden kan allerede være utdatert. Det betyr at selskapene som vinner ikke er de med «de smarteste folkene» — men de med <span class="highlight-text">den raskeste læringsevnen</span>. Hvem du må ha med på reisen er ikke nødvendigvis de med mest erfaring, men de med størst evne og vilje til å lære nytt. Dette utfordrer tradisjonelle karrierestiger, rekrutteringskriterier og lederutvelgelse.</p>
+    <div class="board-implication">
+      <div class="board-implication-label">Styreimplikasjon</div>
+      <p>Vurder om selskapets rekrutteringskriterier reflekterer den nye virkeligheten: læringsevne og tilpasningsdyktighet bør vektes like tungt som erfaring og formell kompetanse.</p>
+    </div>
+  </div>
+
+  <!-- C.03 -->
+  <div class="risk-module reveal" id="c03">
+    <div class="risk-module-header">
+      <span class="risk-module-num">C.03</span>
+      <h3>Hva betyr «human centered technology» — i praksis?</h3>
+    </div>
+    <p>«Human centered» var et gjennomgangsuttrykk i Davos, men ingen operasjonaliserte det. I praksis betyr det at teknologien må designes rundt hvordan mennesker faktisk arbeider — ikke hvordan ingeniører forestiller seg at de arbeider. Det betyr brukergrensesnitt som reduserer kognitiv belastning, AI-assistenter som forklarer sin logikk, og systemer som lar mennesket beholde kontroll og oversikt. Det betyr også at implementering starter med brukeren, ikke med teknologien — og at suksessmåling inkluderer brukertilfredshet, ikke bare effektivitetsgevinster.</p>
+    <div class="board-implication">
+      <div class="board-implication-label">Styreimplikasjon</div>
+      <p>Be om at AI-implementeringer måles på brukeropplevelse og adopsjon — ikke bare teknisk ytelse. Ansattes tilbakemelding bør være en fast del av AI-rapporteringen.</p>
+    </div>
+  </div>
+
+  <!-- C.04 -->
+  <div class="risk-module reveal" id="c04">
+    <div class="risk-module-header">
+      <span class="risk-module-num">C.04</span>
+      <h3>Hva er «the human edge» — og hvor er vi p.t. AI overlegne?</h3>
+    </div>
+    <p>I en verden der AI overgår mennesker på stadig flere domener, er spørsmålet «hva kan vi som AI ikke kan?» blitt strategisk. Svaret i dag: kreativ problemløsning i ustrukturerte situasjoner, relasjonsbygging og empati, etisk dømmekraft i gråsoner, tverrfaglig syntese av erfaring og intuisjon, og evnen til å stille de riktige spørsmålene. Men dette forspranget krymper. Det viktigste er å forstå at <span class="highlight-text">«the human edge» er et bevegelig mål</span> — og at selskapene som investerer i disse unikt menneskelige kapabilitetene posisjonerer seg best.</p>
+    <div class="board-implication">
+      <div class="board-implication-label">Styreimplikasjon</div>
+      <p>Kartlegg hvilke kapabiliteter i organisasjonen som er unikt menneskelige og strategisk kritiske. Invester i å styrke disse — det er her selskapets langsiktige konkurranseevne ligger.</p>
+    </div>
+  </div>
+
+  <!-- C.05 -->
+  <div class="risk-module reveal" id="c05">
+    <div class="risk-module-header">
+      <span class="risk-module-num">C.05</span>
+      <h3>De største farene: språkmodeller som forførere</h3>
+    </div>
+    <p>Språkmodellenes primære mekanisme er å generere svar som brukeren oppfatter som relevante og fornuftige. Men dette betyr at de har en <span class="highlight-text">innebygd bias mot å fortelle deg det du vil høre</span>. For ledere som bruker AI til beslutningsstøtte er dette en alvorlig risiko: AI kan forsterke eksisterende overbevisninger, bekrefte svake hypoteser, og gi en falsk følelse av trygghet. De største farene for selskapet inkluderer strategisk blindhet (AI bekrefter feil kurs), regulatorisk risiko (AI «tolker» regler i din favør), og gruppetilpasning (alle i ledelsen bruker samme modell og får samme bekreftelse).</p>
+    <div class="board-implication">
+      <div class="board-implication-label">Styreimplikasjon</div>
+      <p>Bygg inn «adversarial prompting» som praksis: be AI aktivt utfordre antakelsene, ikke bekrefte dem. Bruk flere modeller for kritiske beslutninger. Og sørg for at det alltid er en menneskelig djevelens advokat i rommet.</p>
+    </div>
+  </div>
+
+  <!-- C.06 -->
+  <div class="risk-module reveal" id="c06">
+    <div class="risk-module-header">
+      <span class="risk-module-num">C.06</span>
+      <h3>Det er jobbautomatisering i første omgang — men hva er stillingsimplikasjonen?</h3>
+    </div>
+    <p>Davos snakket om «oppgaveautomatisering» — at AI erstatter oppgaver, ikke hele jobber. Men når tilstrekkelig mange oppgaver i en stilling automatiseres, endrer selve stillingen karakter — eller forsvinner. Implikasjonen er at mange eksisterende stillinger vil bli redesignet: noen blir «AI-forsterkede» med nye ansvarsområder, noen blir overflødig, og helt nye roller oppstår. Selskapene som er i forkant planlegger ikke bare teknologiimplementering — de planlegger organisatorisk redesign ned til stillingsnivå.</p>
+    <div class="board-implication">
+      <div class="board-implication-label">Styreimplikasjon</div>
+      <p>Be om en stillings-konsekvensanalyse: hvilke roller endres, hvilke forsvinner, og hvilke nye oppstår? Og har HR en plan for overgangene? Dette bør kobles direkte til AI-implementeringsplanen.</p>
+    </div>
+  </div>
+
+  <!-- C.07 -->
+  <div class="risk-module reveal" id="c07">
+    <div class="risk-module-header">
+      <span class="risk-module-num">C.07</span>
+      <h3>AI utkonkurrerte elitestudenter — hva er implikasjonen?</h3>
+    </div>
+    <p>I 2025 utkonkurrerte AI-modeller elitestudenter på en rekke kognitive tester, akademiske eksamener og profesjonelle kvalifiseringstester. I lys av den eksponentielle progresjonen er implikasjonen dyp: <span class="highlight-text">utdanningssystemet produserer kandidater som allerede er overgått av AI</span> på mange av de ferdigheter de er trent i. For selskaper betyr dette at tradisjonell rekruttering basert på akademiske prestasjoner er mindre prediktivt for fremtidig verdi. Det som teller er evnen til å bruke AI effektivt, tenke kritisk om AI-output, og levere verdi i samspill med AI.</p>
+    <div class="board-implication">
+      <div class="board-implication-label">Styreimplikasjon</div>
+      <p>Revurder rekrutterings- og utviklingsprogrammer: vekter de evnen til å samarbeide med AI? Investerer selskapet i å gjøre eksisterende ansatte til «AI-native» arbeidstakere?</p>
+    </div>
+  </div>
+
+  <!-- C.08 -->
+  <div class="risk-module reveal" id="c08">
+    <div class="risk-module-header">
+      <span class="risk-module-num">C.08</span>
+      <h3>AI som beslutningsstøtte — hva gjør de beste, og hvordan oppnå maksimal verdi?</h3>
+    </div>
+    <p>AI diskuteres i for liten grad som beslutningsstøtte for ledere. De beste bruker AI som en «strategisk sparringspartner» — ikke for å automatisere beslutninger, men for å forbedre dem. Konkret: de bruker AI til å stress-teste scenarier, syntetisere store mengder data, identifisere blinde flekker i resonnementer, og forberede grundigere beslutningsgrunnlag. Maksimal verdi oppnås når lederen forstår modellenes styrker og svakheter, stiller de riktige spørsmålene, og bruker AI-output som input til — ikke erstatning for — menneskelig dømmekraft.</p>
+    <div class="board-implication">
+      <div class="board-implication-label">Styreimplikasjon</div>
+      <p>Oppmuntre og tilrettelegg for at toppledelsen aktivt bruker AI i beslutningsprosesser. Tilby opplæring i effektiv bruk av AI som strategisk verktøy — ikke bare som produktivitetsverktøy.</p>
+    </div>
+  </div>
+
+  <!-- C.09 -->
+  <div class="risk-module reveal" id="c09">
+    <div class="risk-module-header">
+      <span class="risk-module-num">C.09</span>
+      <h3>Gapet mellom ledernes AI-readiness og resten av organisasjonen</h3>
+    </div>
+    <p>Et av de viktigste uadresserte temaene i Davos: gapet mellom hvor lederne er hva gjelder AI-forståelse og -readiness, kontra der resten av de ansatte er. Mange CEO-er og styremedlemmer har begynt å forstå AI-potensialet, men <span class="highlight-text">organisasjonen under dem er ofte langt bak</span> — med usikkerhet, motstand og begrenset praktisk kompetanse. Dette gapet er farlig: ledelsen tar beslutninger om AI-transformasjon som organisasjonen ikke er rustet til å gjennomføre. Resultatet er piloter som aldri skalerer, frustrerte ansatte, og en voksende tillitskrise mellom topp og bunn.</p>
+    <div class="board-implication">
+      <div class="board-implication-label">Styreimplikasjon</div>
+      <p>Krev en ærlig kartlegging av AI-readiness på alle nivåer i organisasjonen — ikke bare i ledelsen. AI-transformasjon som kun drives fra toppen, uten forankring i resten av organisasjonen, vil feile.</p>
+    </div>
+  </div>
+
+  <!-- C.10 -->
+  <div class="risk-module reveal" id="c10">
+    <div class="risk-module-header">
+      <span class="risk-module-num">C.10</span>
+      <h3>Rollene du må ha i ledelsen: CIO, CISO, Chief Data & Knowledge Officer, CAI</h3>
+    </div>
+    <p>AI-transformasjon krever nye eller redesignede roller i toppledelsen. De selskapene som lykkes har typisk fire nøkkelroller på plass:</p>
+    <p><strong>CIO (Chief Information Officer)</strong> — eier teknologiplattformen og sikrer at AI-infrastrukturen er robust, sikker og skalerbar. <strong>CISO (Chief Information Security Officer)</strong> — kritisk i en verden der AI både forsterker angrep og forsvar; cybersikkerhet må oppgraderes parallelt med AI-adopsjon.</p>
+    <p><strong>Chief Data & Knowledge Officer</strong> — eier datakvaliteten og kunnskapsforvaltningen som AI er avhengig av. Uten god data er AI verdiløs. <strong>CAI (Chief AI Officer)</strong> — binder sammen teknologi, forretning og organisasjon; sikrer at AI-strategien er koblet til verdiskapning og at governance er på plass.</p>
+    <p>Disse rollene trenger ikke nødvendigvis å være separate stillinger i alle organisasjoner, men <span class="highlight-text">ansvarene de representerer må være tydelig plassert</span>.</p>
+    <div class="board-implication">
+      <div class="board-implication-label">Styreimplikasjon</div>
+      <p>Gjennomgå ledergruppens sammensetning: er disse fire ansvarsområdene dekket med tilstrekkelig kompetanse og mandat? For mange selskaper er svaret nei — og det er en strategisk risiko i seg selv.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════ SOURCES ════════ -->
+<section class="section" id="sources">
+  <div class="reveal">
+    <span class="section-label">Kilder & Metode</span>
+    <h2>Om denne rapporten</h2>
+  </div>
+  <div class="reveal" style="margin-top: 24px;">
+    <p style="color: var(--text-secondary); font-size: 0.95rem; max-width: 66ch; margin-bottom: 24px;">Denne rapporten er basert på analyse av offentlig tilgjengelige paneldiskusjoner, taler og pressebriefinger fra World Economic Forum Annual Meeting, Davos-Klosters, januar 2026. Fire AI-modeller (GPT, Claude, Gemini, Grok) fikk identiske spørsmål og ble bedt om uavhengig analyse. Svarene er konsolidert og redaksjonelt bearbeidet av forfatter.</p>
+    <div style="font-size: 0.85rem; color: var(--text-tertiary); line-height: 1.9;">
+      <p>1. World Economic Forum, «Annual Meeting 2026: Collaboration for the Intelligent Age», weforum.org</p>
+      <p>2. McKinsey & Company, «The State of AI in 2025/2026», mckinsey.com</p>
+      <p>3. OpenAI, «Keynote by Sam Altman, Davos 2026», openai.com</p>
+      <p>4. European Commission, «EU AI Act Implementation Timeline», digital-strategy.ec.europa.eu</p>
+      <p>5. NVIDIA, «Jensen Huang at WEF 2026», nvidia.com</p>
+      <p>6. International Energy Agency, «Data Centres and AI: Energy Demand Outlook 2026», iea.org</p>
+      <p>7. NIST, «AI Risk Management Framework (AI RMF 1.0)», nist.gov</p>
+      <p>8. ISO, «ISO/IEC 42001:2023 — AI Management System Standard», iso.org</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-bar">
+  <p>Davos 2026 AI Rapport · Tobias Mørland Kvaslerud · BDO Consulting Stavanger · Januar 2026</p>
+  <p style="margin-top: 6px;">Analysesamarbeid med GPT, Claude Opus 4.6, Gemini & Grok. Innholdet reflekterer det forfatteren og språkmodellene vurderte, og ikke BDO.</p>
+</footer>
+
+</div>
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // Scroll reveal
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // Accordion
+  document.querySelectorAll('.exec-module-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const mod = header.parentElement;
+      const isOpen = mod.classList.contains('open');
+      mod.classList.toggle('open');
+      header.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+
+  // Model card tabs
+  document.querySelectorAll('.model-card').forEach(card => {
+    card.querySelectorAll('.model-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabName = tab.dataset.tab;
+        card.querySelectorAll('.model-tab').forEach(t => t.classList.remove('active'));
+        card.querySelectorAll('.model-tab-content').forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        card.querySelector(`.model-tab-content[data-tab="${tabName}"]`)?.classList.add('active');
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
